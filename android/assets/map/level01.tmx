@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="10" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="background-tiles" tilewidth="70" tileheight="70">
+  <image source="../img/background-tiles.png" width="910" height="840"/>
+ </tileset>
+ <tileset firstgid="157" name="aliens-badges" tilewidth="70" tileheight="70">
+  <image source="../img/aliens-badges.png" width="188" height="141"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAMRIhQQ02gQAO7YWZaAnEpmpw4ECtDsSQJZooCsRgQC0OxBBnuoRaQp4GZIlQ0UwQJw8JaiUQzgqFYBA/GBgIpwAB/9gke
+  </data>
+ </layer>
+ <layer name="background" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJwTYWBgECGAY4lQg47RwUwoBoF4LPLIANkcKxxqIpHY2MybicbH5S5sgJD7SAXI5okBsTAVzQMBXP7CFXbIQA6IlbGYB8LySGLFQGyJxxwxqDkgLIHHffJockEkYBgIxoMDsWBiATa9AGNmEeY=
+  </data>
+ </layer>
+</map>
