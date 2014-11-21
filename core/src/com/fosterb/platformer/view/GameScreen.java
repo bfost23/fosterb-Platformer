@@ -2,6 +2,7 @@ package com.fosterb.platformer.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -29,6 +30,10 @@ public class GameScreen implements Screen{
 
     @Override
     public void render(float delta) {
+        //set color that will clear screen
+        Gdx.gl.glClearColor(0.76f, 0.88f, 0.93f, 1f);
+        //clears game screen with the color that was set
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
         //updates camera when there is movement
         renderer.setView(camera);
@@ -39,7 +44,10 @@ public class GameScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-
+        //updates the camera height and width
+        camera.viewportWidth = 14f;
+        camera.viewportHeight = 14f * height / width;
+        camera.update();
     }
 
     @Override
