@@ -4,15 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.fosterb.platformer.model.Player;
 
 public class GameScreen implements Screen{
     //created the variables
     public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
     public OrthographicCamera camera;
+    public SpriteBatch spriteBatch;
+    public Player player;
 
 
     public GameScreen() {
@@ -26,6 +30,9 @@ public class GameScreen implements Screen{
         camera = new OrthographicCamera(14f, 14f * (height / width));
         //set the position of the camera
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
+
+        spriteBatch = new SpriteBatch();
+        player = new Player();
     }
 
     @Override
@@ -39,6 +46,12 @@ public class GameScreen implements Screen{
         renderer.setView(camera);
         //renders the map
         renderer.render();
+        //begins drawing the player
+        spriteBatch.begin();
+        //draws the player
+        player.draw(spriteBatch);
+        //ends drawing the player
+        spriteBatch.end();
 
     }
 
