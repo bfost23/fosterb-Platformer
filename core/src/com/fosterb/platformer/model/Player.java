@@ -10,48 +10,28 @@ import com.badlogic.gdx.math.Vector2;
 public class Player {
     //sets the position and spritesheet variables
     public Vector2 position;
-    public Texture spriteSheet;
-    public TextureRegion[] spriteFrames;
-
     public Animation animation;
+    public SpriteSheet spriteSheet;
     private float stateTime;
+
+    public int width;
+    public int height;
 
     public Player() {
         //sets the position of the player
         position = new Vector2(9, 3);
-        //sets texture for the player to be drawn on
-        spriteSheet = new Texture(Gdx.files.internal("img/aliens.png"));
-        //splits spritesheet into seperate players
-        TextureRegion[][] spriteSheetFrame = TextureRegion.split(spriteSheet, 70, 100);
-        int counter = 0;
-        //counts the number of players in the spritesheet
-        for(int row = 0; row < spriteSheetFrame.length; row++){
-          for(int column = 0; column < spriteSheetFrame[row].length; column++){
-            counter++;
-          }
-        }
-        //creating space for our sprites
-        spriteFrames = new TextureRegion[counter];
+        width = 70;
+        height = 100;
 
-        counter = 0;
-        for(TextureRegion[] row : spriteSheetFrame){
-           for (TextureRegion sprite : row){
-               //puts each sprite into spriteFrames
-               spriteFrames[counter++] = sprite;
-           }
-        }
-        //setting texture region for the player
-        TextureRegion[] animationFrames = new TextureRegion[2];
-        //specifies which sprites to use for animation
-        animationFrames[0] = spriteFrames[12];
-        animationFrames[1] = spriteFrames[13];
-        animation = new Animation(.07f, animationFrames);
+        spriteSheet = new SpriteSheet("img/aliens.png", width, height);
+        //creates animation
+        animation = spriteSheet.createAnimation();
 
         stateTime = 0f;
     }
     public void draw(Batch spriteBatch){
         //connects to the spriteSheet and displayed the player
-        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, 70 * (1/70f), 100 * (1/70f));
+        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
 
     }
     public void update(float deltaTime){
