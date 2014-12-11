@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class SpriteSheet {
     public Texture spriteSheet;
     public TextureRegion[] spriteFrames;
-    public Animation animation;
     public SpriteSheet(String pathtofile, int width, int height) {
         //sets texture for the player to be drawn on
         spriteSheet = new Texture(Gdx.files.internal(pathtofile));
@@ -34,13 +33,18 @@ public class SpriteSheet {
         }
 
     }
-   public Animation createAnimation(){
+   public Animation createAnimation(int startFrame, int lastFrame, float animationSpeed){
+       //finding out the amount of frames
+       int counter = (lastFrame + 1) - startFrame;
        //setting texture region for the player
-       TextureRegion[] animationFrames = new TextureRegion[2];
-       //specifies which sprites to use for animation
-       animationFrames[0] = spriteFrames[12];
-       animationFrames[1] = spriteFrames[13];
-       animation = new Animation(.07f, animationFrames);
-       return animation;
+       TextureRegion[] animationFrames = new TextureRegion[counter];
+       for(int index = lastFrame; index >= startFrame; index--){
+           counter--;
+           //specifies which sprites to use for animation
+           animationFrames[counter] = spriteFrames[index];
+
+       }
+
+       return new Animation(animationSpeed, animationFrames);
    }
 }
