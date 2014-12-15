@@ -11,6 +11,7 @@ public class Player {
     //sets the position and spritesheet variables
     public Vector2 position;
     public Animation animation;
+
     public SpriteSheet spriteSheet;
     private float stateTime;
 
@@ -25,18 +26,20 @@ public class Player {
 
         spriteSheet = new SpriteSheet("img/aliens.png", width, height);
         //creates animation
-        animation = spriteSheet.createAnimation(12, 13, .09f);
-
+        animation = spriteSheet.createAnimation(9, 10, .09f);
+        animation = spriteSheet.flipAnimation(animation, true, false);
         stateTime = 0f;
     }
     public void draw(Batch spriteBatch){
         //connects to the spriteSheet and displayed the player
         spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
 
+
     }
     public void update(float deltaTime){
         stateTime += deltaTime;
         //moves player in the up direction
-        position.y += deltaTime;
+        position.x += deltaTime;
+
     }
 }

@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class SpriteSheet {
-    public Texture spriteSheet;
+     public Texture spriteSheet;
     public TextureRegion[] spriteFrames;
     public SpriteSheet(String pathtofile, int width, int height) {
         //sets texture for the player to be drawn on
@@ -47,4 +47,17 @@ public class SpriteSheet {
 
        return new Animation(animationSpeed, animationFrames);
    }
+    public Animation flipAnimation(Animation originalAnimation,  boolean flipX, boolean flipY){
+        //counts the amount of frames in the animation
+        int frameCount = originalAnimation.getKeyFrames().length;
+        TextureRegion[] flippedFrames = new TextureRegion[frameCount];
+        //flips the animation
+        for (int index = 0; index < frameCount; index++){
+            flippedFrames[index] = originalAnimation.getKeyFrames()[index];
+            flippedFrames[index].flip(flipX, flipY);
+
+        }
+
+        return new Animation(originalAnimation.getAnimationDuration(), flippedFrames);
+    }
 }
