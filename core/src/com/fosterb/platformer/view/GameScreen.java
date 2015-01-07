@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.fosterb.platformer.model.Player;
 
 public class GameScreen implements Screen{
@@ -18,11 +21,16 @@ public class GameScreen implements Screen{
     public Batch spriteBatch;
     public Player player;
 
+    public static World gameWorld;
+    private Box2DDebugRenderer debugRenderer;
+
 
     public GameScreen() {
         //set the map variable to our level we made
         map = new TmxMapLoader().load("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
+        gameWorld = new World(new Vector2(0, -9.8f), true);
+        debugRenderer = new Box2DDebugRenderer();
         //storing height and width of window into variables
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -54,6 +62,7 @@ public class GameScreen implements Screen{
         //ends drawing the player
         spriteBatch.end();
 
+        debugRenderer.render(gameWorld, camera.combined);
     }
 
     @Override
