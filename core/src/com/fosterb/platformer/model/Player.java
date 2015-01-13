@@ -1,16 +1,13 @@
 package com.fosterb.platformer.model;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.fosterb.platformer.view.GameScreen;
+import com.fosterb.platformer.controller.LevelController;
 
 import java.util.HashMap;
 
@@ -22,15 +19,15 @@ public class Player {
     private float stateTime;
     private HashMap<String, Animation> playerAnimations;
 
-    public int width;
-    public int height;
+    public float width;
+    public float height;
 
-    public Player() {
+    public Player(int width, int height) {
         //sets the position of the player
-        position = new Vector2(9, 3);
+        position = new Vector2(3, 6);
         playerAnimations = new HashMap<String, Animation>();
-        width = 70;
-        height = 100;
+        this.width = width * LevelController.UNIT_SCALE;
+        this.height = height * LevelController.UNIT_SCALE;
 
         spriteSheet = new SpriteSheet("img/aliens.png", width, height);
         //creates animation //puts string into hashmap
@@ -57,12 +54,12 @@ public class Player {
         BodyDef bodyDefinition = new BodyDef();
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
-        Body playerBody = GameScreen.gameWorld.createBody(bodyDefinition);
+        Body playerBody = LevelController.gameWorld.createBody(bodyDefinition);
         playerBody.setUserData(this);
 
         //sets the size for rectangleShape
         PolygonShape rectangleShape = new PolygonShape();
-        rectangleShape.setAsBox(width / 2f, height / 2f, new Vector2(width / 2f, height / 2f), 0f);
+        rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0f);
 
         //defines the shape of the fixture
         FixtureDef fixtureDefinition = new FixtureDef();
@@ -75,14 +72,12 @@ public class Player {
     public void draw(Batch spriteBatch){
         //connects to the spriteSheet and displayed the player
 
-        spriteBatch.draw(playerAnimations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
+        spriteBatch.draw(playerAnimations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);
 
 
     }
     public void update(float deltaTime){
         stateTime += deltaTime;
-        //moves player in the up direction
-        position.x += deltaTime;
 
     }
 }
