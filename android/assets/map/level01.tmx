@@ -8,12 +8,33 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYCAMRIhQQ02gQAO7YWaaA3EpmpwcECtDsQID8UAUiMWAWBiKJchwD7WAPA3MFCHDTEU8ZsEwLKyVSDQ7GIpF8GBsIJACDACzmglL
+   eJxjYBjcQITK5pkDcSkWcWUoJhWIAbEwFEuQoE+BDLvwAXkamClCgplKUFoRj1kwDAtrJRxqcYFgKBbBg7GBQAowAFMPCMY=
   </data>
  </layer>
  <layer name="background" width="20" height="10">
   <data encoding="base64" compression="zlib">
-   eJwTYWBgECGAY4lQg47RwUwoBoF4LPLIANkcCwJqcZk3E42Py13EmocNwMxThmJizBMjoJYYgO4+XP6yIsIsOQZM98DCSh5JrBiILfGYA/OXIhb3IPPl0eSCicRBROoJxIKJBdj0AgBLJhH5
+   eJxjYKAfmEmGHgs62CWHxFYg0R4lIFaGYhUS1FMTiOAQtyJCL8g96O4WgWJ5JLFiILbEY44YA8RfML243CePJhdMJA4iUk8gFkwswKYXAOmODZQ=
   </data>
  </layer>
+ <objectgroup color="#ff0000" name="collision" width="20" height="10">
+  <object name="ground" type="ground" x="0" y="280">
+   <polyline points="0,0 280,0 280,70 0,70 0,0"/>
+  </object>
+  <object name="ground" type="ground" x="350" y="280">
+   <polyline points="0,0 70,-70 210,-70 280,0 0,0"/>
+  </object>
+  <object name="ground" type="ground" x="560" y="420">
+   <polyline points="0,0 0,70 -140,70 -140,140 -70,140 140,140 140,0 0,0"/>
+  </object>
+  <object name="ground" type="ground" x="840" y="280">
+   <polyline points="0,0 140,0"/>
+  </object>
+  <object name="ground" type="ground" x="980" y="280">
+   <polyline points="0,0 210,210 420,210 420,350 -70,350 -70,70 -140,70 -140,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="blocks" width="20" height="10">
+  <object name="block" type="block" x="420" y="70" width="70" height="70"/>
+  <object name="block" type="block" x="420" y="140" width="70" height="70"/>
+ </objectgroup>
 </map>

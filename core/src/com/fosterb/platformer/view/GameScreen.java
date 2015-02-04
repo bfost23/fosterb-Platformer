@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.fosterb.platformer.controller.CameraController;
+import com.fosterb.platformer.controller.InputController;
 import com.fosterb.platformer.controller.LevelController;
 import com.fosterb.platformer.controller.PlayerController;
 
@@ -13,6 +14,7 @@ public class GameScreen implements Screen{
         LevelController.initializeController();
         CameraController.initializeController();
         PlayerController.initializeController();
+        InputController.initializeController();
 
     }
 
