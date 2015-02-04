@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.fosterb.platformer.model.Bodies;
+import com.fosterb.platformer.model.CollisionListener;
 import com.fosterb.platformer.model.Level;
 import com.fosterb.platformer.model.Player;
 import com.fosterb.platformer.model.Sprite;
@@ -31,6 +32,7 @@ public class LevelController {
 
         level = new Level("map/level01.tmx");
         gameWorld = new World(new Vector2(0, -10), true);
+        gameWorld.setContactListener(new CollisionListener());
         //initialized new array
         worldBodies = new Array<Body>();
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE);

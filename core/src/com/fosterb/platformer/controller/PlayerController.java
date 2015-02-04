@@ -11,6 +11,8 @@ public class PlayerController {
     public static String movementAction;
     public static String specialAction;
 
+    public static boolean grounded;
+
     private enum State{
         Idle, Walk, Run, Swim, Duck, Hurt, Jump, Climb
     }
@@ -54,9 +56,11 @@ public class PlayerController {
             player.physicsBody.applyLinearImpulse(-VELOCITY, 0, position.x, position.y, false);
             player.direction = "left";
         }
-        if(specialAction.equalsIgnoreCase("jump")){
-            player.physicsBody.applyLinearImpulse( 0, 0.5f, position.x, position.y, true);
+        if(specialAction.equalsIgnoreCase("jump") && PlayerController.grounded == true){
+            player.physicsBody.applyLinearImpulse( 0, 3f, position.x, position.y, true);
+            grounded = false;
         }
+
         if (Math.abs(velocity.x) > 0){
             playerState = State.Walk;
         }

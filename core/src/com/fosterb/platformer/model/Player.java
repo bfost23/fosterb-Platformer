@@ -50,14 +50,23 @@ public class Player extends Sprite{
         PolygonShape rectangleShape = new PolygonShape();
         rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0f);
 
+        PolygonShape sensorShape = new PolygonShape();
+        sensorShape.setAsBox(this.width / 2.2f, this.height / 32, new Vector2(this.width / 2, 0), 0f);
+
         //defines the shape of the fixture
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
+
+        FixtureDef fixtureDefinitionListener = new FixtureDef();
+        fixtureDefinitionListener.shape = sensorShape;
+        fixtureDefinitionListener.isSensor = true;
         fixtureDefinition.density = 0.5f;
 
         //creates the fixture
         physicsBody.createFixture(fixtureDefinition);
+        physicsBody.createFixture(fixtureDefinitionListener);
         rectangleShape.dispose();
+        sensorShape.dispose();
     }
     public void draw(Batch spriteBatch){
         super.draw(spriteBatch);
