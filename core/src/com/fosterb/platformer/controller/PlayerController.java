@@ -57,15 +57,29 @@ public class PlayerController {
             player.direction = "left";
         }
         if(specialAction.equalsIgnoreCase("jump") && PlayerController.grounded == true){
-            player.physicsBody.applyLinearImpulse( 0, 3f, position.x, position.y, true);
+            if(velocity.y > MAX_VELOCITY ){
+                velocity.y = 0;
+                player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
+            }
+            player.physicsBody.applyLinearImpulse( 0, 4.5f, position.x, position.y, true);
             grounded = false;
         }
 
         if (Math.abs(velocity.x) > 0){
-            playerState = State.Walk;
+            if(velocity.y > 0 || grounded == false) {
+                playerState = State.Jump;
+            }
+            else{
+                playerState = State.Walk;
+            }
         }
         else{
-            playerState = State.Idle;
+            if (velocity.y > 0 || grounded == false) {
+                playerState = State.Jump;
+            }
+            else{
+                playerState = State.Idle;
+            }
         }
         setCurrentAnimation();
 
@@ -77,17 +91,7 @@ public class PlayerController {
         if (player.direction.equals("left")){
             setLeftAnimation();
         }
-        if (player.direction.equals("jump")){
-            setJumpAnimation();
-        }
-    }
-    private static void setJumpAnimation(){
-        if (playerState == State.Jump){
-            player.currentAnimation = "jumpRight";
-        }
-        else if (playerState == State.Idle){
-            player.currentAnimation = "idleRight";
-        }
+
     }
     private static void setRightAnimation(){
         if (playerState == State.Walk){
@@ -95,6 +99,9 @@ public class PlayerController {
         }
         else if (playerState == State.Idle){
             player.currentAnimation = "idleRight";
+        }
+        else if (playerState == State.Jump){
+            player.currentAnimation = "jumpRight";
         }
     }
     private static void setLeftAnimation(){
@@ -104,6 +111,9 @@ public class PlayerController {
         }
         else if (playerState == State.Idle){
             player.currentAnimation = "idleLeft";
+        }
+        else if (playerState == State.Jump){
+            player.currentAnimation = "jumpLeft";
         }
     }
 }

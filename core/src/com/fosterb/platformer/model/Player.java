@@ -51,7 +51,7 @@ public class Player extends Sprite{
         rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0f);
 
         PolygonShape sensorShape = new PolygonShape();
-        sensorShape.setAsBox(this.width / 2.2f, this.height / 32, new Vector2(this.width / 2, 0), 0f);
+        sensorShape.setAsBox(this.width / 3.7f, this.height / 32, new Vector2(this.width / 2, 0), 0f);
 
         //defines the shape of the fixture
         FixtureDef fixtureDefinition = new FixtureDef();
