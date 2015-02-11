@@ -2,6 +2,7 @@ package com.fosterb.platformer.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 
 public class CameraController {
 
@@ -24,7 +25,12 @@ public class CameraController {
 
     public static void update()
     {
+
         camera.position.set(PlayerController.player.position.x, PlayerController.player.position.y, 0);
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+        camera.position.x = MathUtils.clamp(PlayerController.player.position.x, camera.viewportWidth / 2f, width * LevelController.UNIT_SCALE);
+        camera.position.y = MathUtils.clamp(PlayerController.player.position.y, camera.viewportHeight / 2f, height * LevelController.UNIT_SCALE);
         camera.update();
     }
     public static void resize(int width, int height){
