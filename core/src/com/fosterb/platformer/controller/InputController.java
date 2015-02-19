@@ -58,6 +58,9 @@ public class InputController {
                         else if (inputControl.action.equalsIgnoreCase("jump")){
                             PlayerController.specialAction = "jump";
                         }
+                        else if (inputControl.action.equalsIgnoreCase("duck")){
+                            PlayerController.specialAction = "duck";
+                        }
                     }
                 }
                 return true;
@@ -77,6 +80,9 @@ public class InputController {
                         else if (inputControl.action.equalsIgnoreCase("jump")){
                             PlayerController.specialAction = "";
                         }
+                        else if (inputControl.action.equalsIgnoreCase("duck")){
+                            PlayerController.specialAction = "";
+                        }
                     }
                 }
                 return true;
@@ -93,6 +99,9 @@ public class InputController {
                 else if (keycode == Input.Keys.UP){
                     PlayerController.specialAction = "jump";
                 }
+                else if (keycode == Input.Keys.DOWN){
+                    PlayerController.specialAction = "down";
+                }
                 return true;
             }
 
@@ -105,6 +114,9 @@ public class InputController {
                     PlayerController.movementAction = "";
                 }
                 if (keycode == Input.Keys.UP){
+                    PlayerController.specialAction = "";
+                }
+                if (keycode == Input.Keys.DOWN){
                     PlayerController.specialAction = "";
                 }
                 return true;

@@ -29,6 +29,9 @@
   <object name="ground" type="ground" x="840" y="280">
    <polyline points="0,0 210,0 210,70 280,70 280,140 350,140 350,210 560,210 560,350 70,350 70,70 0,70 0,0"/>
   </object>
+  <object name="ground" type="ground" x="0" y="0">
+   <polyline points="0,0 0,700 1400,700 1400,0 0,0"/>
+  </object>
  </objectgroup>
  <objectgroup name="blocks" width="20" height="10">
   <object name="block" type="block" x="420" y="70" width="70" height="70"/>

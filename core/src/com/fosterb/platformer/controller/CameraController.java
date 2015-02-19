@@ -29,8 +29,8 @@ public class CameraController {
         camera.position.set(PlayerController.player.position.x, PlayerController.player.position.y, 0);
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
-        camera.position.x = MathUtils.clamp(PlayerController.player.position.x, camera.viewportWidth / 2f, width * LevelController.UNIT_SCALE);
-        camera.position.y = MathUtils.clamp(PlayerController.player.position.y, camera.viewportHeight / 2f, height * LevelController.UNIT_SCALE);
+        camera.position.x = MathUtils.clamp(PlayerController.player.position.x, camera.viewportWidth / 2f, width / (70-20.7f));
+        camera.position.y = MathUtils.clamp(PlayerController.player.position.y, camera.viewportHeight / 2f, height / (70-20));
         camera.update();
     }
     public static void resize(int width, int height){

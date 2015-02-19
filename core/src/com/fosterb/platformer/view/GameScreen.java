@@ -7,10 +7,12 @@ import com.fosterb.platformer.controller.CameraController;
 import com.fosterb.platformer.controller.InputController;
 import com.fosterb.platformer.controller.LevelController;
 import com.fosterb.platformer.controller.PlayerController;
+import com.fosterb.platformer.controller.SoundController;
 
 public class GameScreen implements Screen{
 
     public GameScreen() {
+        SoundController.initializeSoundController();
         LevelController.initializeController();
         CameraController.initializeController();
         PlayerController.initializeController();
