@@ -1,5 +1,6 @@
 package com.fosterb.platformer.controller;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -39,6 +40,7 @@ public class LevelController {
         debugRenderer = new Box2DDebugRenderer();
         spriteBatch = renderer.getSpriteBatch();
         createLevelBodies();
+        SoundController.play("music");
 
     }
 
